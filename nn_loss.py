@@ -1,0 +1,25 @@
+import torch
+from torch.nn import L1Loss,MSELoss,CrossEntropyLoss
+inputs=torch.tensor([1,2,3],dtype=torch.float32)
+# print(inputs.shape)
+targets=torch.tensor([1,2,5],dtype=torch.float32)
+# print(targets.shape)
+inputs=torch.reshape(inputs,(1,1,1,3))#1batchszie 1channel 1行3列
+targets=torch.reshape(targets,(1,1,1,3))
+print(targets.shape)
+# a=torch.tensor([[1,2,3],[4,5,6]])
+# print(a.shape)
+# b=torch.tensor([[[1,2,3],[4,5,6]],[[1,2,3],[4,5,6]]])
+# print(b.shape)
+loss=L1Loss(reduction='sum')
+result=loss(inputs,targets)
+loss_mse=MSELoss()#均方损失函数
+result_mse=loss_mse(inputs,targets)
+print(result)
+print(result_mse)
+x=torch.tensor([0.1,0.2,0.3])
+y=torch.tensor([1])
+x=torch.reshape(x,(1,3))
+loss_cross=CrossEntropyLoss()
+result_cross=loss_cross(x,y)
+print(result_cross)
